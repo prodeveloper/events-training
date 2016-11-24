@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Event;
 class EventsController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('events');
+        $events = Event::paginate(10);
+        return view('events_layout',['events'=>$events]);
     }
 
     /**

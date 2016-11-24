@@ -15,7 +15,9 @@ class CreateEventsTable extends Migration
     {
         
         Schema::create('events', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('title');
+            $table->string('summary');
             $table->string('description');
             $table->string('file_name');
             $table->timestamps();
@@ -30,5 +32,6 @@ class CreateEventsTable extends Migration
     public function down()
     {
         //
+        Schema::drop('events');
     }
 }
